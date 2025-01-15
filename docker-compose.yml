@@ -16,7 +16,7 @@ services:
   admin:
     build: ./admin
     ports:
-      - "5174:5173"
+      - "5174:80"
 
   frontend:
     build: ./frontend
