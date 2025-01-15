@@ -2,7 +2,26 @@
   text-align: center;
   padding: 20px;
 
-  button {
-    margin-top: 10px;
+  .clickButton {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .coins {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
   }
 }
