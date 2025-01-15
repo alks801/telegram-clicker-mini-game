@@ -1,0 +1,1 @@
+docker-compose exec db psql -U user -d postgres -f /app/db/drop.sql
