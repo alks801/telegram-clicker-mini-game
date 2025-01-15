@@ -3,13 +3,39 @@ import styles from "./Clicker.module.scss"
 import { useApi } from "../../hooks/useApi"
 
 export const Clicker = () => {
-  const [coins, setCoins] = useState(0)
-  const { fetchData } = useApi()
+  cconst[(coins, setCoins)] = useState(0)
+  const [localClicks, setLocalClicks] = useState(0) // Local clicks counter
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = async () => {
-    const response = await fetchData("/api/click", { method: "POST" })
-    if (response.ok) {
-      setCoins((prev) => prev + 1)
+    setCoins((prev) => prev + 1)
+    setLocalClicks((prev) => prev + 1)
+
+    // If collected 20 coins - Send to API
+    if (localClicks + 1 >= 20) {
+      try {
+        setIsLoading(true)
+        const response = await fetch("/api/click", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ coins: coins + 20 }), // Send total coins
+        })
+
+        if (!response.ok) {
+          // If there is an error - rollback
+          setCoins((prev) => prev - 20)
+          throw new Error("Failed to update coins")
+        }
+
+        // Clear local state
+        setLocalClicks(0)
+      } catch (error) {
+        console.error("Error:", error)
+      } finally {
+        setIsLoading(false)
+      }
     }
   }
 

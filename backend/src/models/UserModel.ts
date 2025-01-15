@@ -22,4 +22,9 @@ export class UserModel {
     const result = await this.pool.query("UPDATE users SET status = $1 WHERE id = $2 RETURNING *", [status, id])
     return result.rows[0]
   }
+
+  async updateUserCoins(id: number, coins: number): Promise<User> {
+    const result = await this.pool.query("UPDATE users SET coins = $1 WHERE id = $2 RETURNING *", [coins, id])
+    return result.rows[0]
+  }
 }

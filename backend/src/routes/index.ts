@@ -18,6 +18,7 @@ export const createRouter = (pool: Pool) => {
   router.post("/users", userController.createUser.bind(userController))
   router.get("/users/:id", userController.getUser.bind(userController))
   router.put("/users/:id/status", userController.updateUserStatus.bind(userController))
+  router.put("/users/:id/coins", userController.updateUserCoins.bind(userController))
 
   // Upgrade routes
   router.post("/upgrades", upgradeController.createUpgrade.bind(upgradeController))
