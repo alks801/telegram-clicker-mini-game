@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { TelegramWindow } from "../../hooks/useTelegram"
 
 export function usePaymentStars() {
   const [paymentStatus, setPaymentStatus] = useState<"idle" | "pending" | "success" | "failed">("idle")
@@ -7,8 +8,9 @@ export function usePaymentStars() {
     setPaymentStatus("pending")
 
     try {
-      // Вызов метода Telegram WebApp для оплаты
-      const result = await window.Telegram.WebApp.invokeCustomMethod("payWithStars", { amount })
+      const win = window as TelegramWindow
+
+      const result = await win.Telegram?.WebApp.invokeCustomMethod("payWithStars", { amount })
 
       if (result.status === "success") {
         setPaymentStatus("success")

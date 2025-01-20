@@ -2,14 +2,15 @@ import { useEffect, useState } from "react"
 import { MOCK_TELEGRAM } from "../utils/config"
 import { mockTelegram } from "../mocks/telegram"
 
-type TelegramWindow = Window &
+export type TelegramWindow = Window &
   typeof globalThis & {
     Telegram?: {
       WebApp: {
         initDataUnsafe: {
           user: unknown
         },
-        ready: () => void
+        ready: () => void,
+        invokeCustomMethod: (method: string, opts: any) => Promise<any>
       }
     }
   }
