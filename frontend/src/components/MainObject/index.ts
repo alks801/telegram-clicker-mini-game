@@ -1,0 +1,1 @@
+export { MainObject } from "./MainObject"

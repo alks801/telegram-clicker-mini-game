@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styles from "./Upgrades.module.scss"
 
-interface Upgrade {
+type Upgrade = {
   id: number
   name: string
   cost: number

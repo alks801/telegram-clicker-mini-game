@@ -2,12 +2,17 @@ import React, { useState } from "react"
 import styles from "./Clicker.module.scss"
 import { useApi } from "../../hooks/useApi"
 
-export const Clicker = () => {
-  cconst[(coins, setCoins)] = useState(0)
+type Props = {
+  onClick: () => void
+}
+
+export const Clicker = ({ onClick }: Props) => {
+  const [coins, setCoins] = useState(0)
   const [localClicks, setLocalClicks] = useState(0) // Local clicks counter
   const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = async () => {
+    onClick()
     setCoins((prev) => prev + 1)
     setLocalClicks((prev) => prev + 1)
 
@@ -41,7 +46,6 @@ export const Clicker = () => {
 
   return (
     <div className={styles.clicker}>
-      <h2>Welcome, {user?.first_name}!</h2>
       <button className={styles.clickButton} onClick={handleClick}>
         Click Me!
       </button>

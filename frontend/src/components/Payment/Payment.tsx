@@ -3,18 +3,18 @@ import { usePaymentStars } from "./usePaymentStars"
 import { usePaymentTON } from "./usePaymentTON"
 import styles from "./Payment.module.scss"
 
-interface PaymentProps {
+type Props = {
   webApp: any
 }
 
-export const Payment = ({ webApp }: PaymentProps) => {
+export const Payment = ({ webApp }: Props) => {
   const { handleTelegramStarsPayment, paymentTelegramStarsStatus } = usePaymentStars()
   const { handleTonPayment, paymentTONStatus } = usePaymentTON()
 
   return (
     <div className={styles.payment}>
       <h3>Payment</h3>
-      <button onClick={handleTelegramStarsPayment} disabled={paymentTelegramStarsStatus === "pending"}>
+      <button onClick={() => handleTelegramStarsPayment(1)} disabled={paymentTelegramStarsStatus === "pending"}>
         Pay with Telegram Stars
       </button>
       <button
