@@ -36,5 +36,9 @@
     "@types/react-dom": "^18.2.7",
     "@types/jest": "^29.5.4",
     "@types/node": "^20.5.7"
+  },
+  "engines": {
+    "yarn": "PLEASE USE NPM",
+    "node": ">=20"
   }
 }

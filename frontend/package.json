@@ -49,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "yarn": "PLEASE USE NPM",
+    "node": ">=20"
   }
 }

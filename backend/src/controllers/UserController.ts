@@ -68,7 +68,7 @@ export class UserController {
       res.status(200).json({ coins: user.coins })
     } catch (error) {
       console.error("Error:", error)
-      logger.error(`Error updating coins: ${error.message}`)
+      // logger.error(`Error updating coins: ${error.message}`)
       res.status(500).json({ error: "Internal Server Error" })
     }
   }
